@@ -1,0 +1,54 @@
+<robot>
+  <robot_specifications>
+    <footprint>
+      
+<!--    -->
+<!--      <footprint_specifications>-->
+<!--        <radius>-->
+<!--          0.5-->
+<!--        </radius>-->
+<!--      </footprint_specifications>-->
+<!--      -->
+      
+      <footprint_specifications>
+        <points>
+          <point>
+            <x>-0.2</x>
+            <y>-0.2</y>
+          </point>
+          <point>
+            <x>0.2</x>
+            <y>-0.2</y>
+          </point>
+          <point>
+            <x>0.2</x>
+            <y>0.2</y>
+          </point>
+          <point>
+            <x>-0.2</x>
+            <y>0.2</y>
+          </point>
+        </points>
+      </footprint_specifications>
+      
+      
+      
+    </footprint>
+    <initial_pose>
+      <x>
+        0
+      </x>
+      <y>
+        0
+      </y>
+      <theta>
+        0
+      </theta>
+    </initial_pose>
+    <laser>
+      <filename>
+        laser_sensors/hokuyo/hokuyo_URG_10LX.xml
+      </filename>
+    </laser>
+  </robot_specifications>
+</robot>

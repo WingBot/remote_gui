@@ -1,0 +1,18 @@
+<!--
+  Driver for the logitech rumblepad2 joystick.
+
+  Use the D pad while pressing and holding the left trigger button (5) to control.
+-->
+<launch>
+  
+  <node pkg="turtlebot_teleop" type="hansbot_teleop_joy" name="hansbot_teleop_joystick">
+    <param name="scale_angular" value="0.2"/>
+    <param name="scale_linear" value="0.1"/>
+    <remap from="hansbot_teleop_joystick/joystick/cmd_vel" to="/cmd_vel"/>
+  </node>
+
+  <node pkg="joy" type="joy_node" name="joystick"/>
+
+</launch>
+
+
