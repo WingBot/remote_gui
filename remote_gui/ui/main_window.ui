@@ -121,7 +121,7 @@
    <property name="minimumSize">
     <size>
      <width>325</width>
-     <height>519</height>
+     <height>601</height>
     </size>
    </property>
    <property name="allowedAreas">
@@ -135,19 +135,6 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_2">
     <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QPushButton" name="quit_button">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Quit</string>
-       </property>
-      </widget>
-     </item>
      <item>
       <widget class="QFrame" name="frame">
        <property name="sizePolicy">
@@ -298,14 +285,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_6">
+         <widget class="QLabel" name="CameraLabel">
           <property name="text">
            <string>Camera</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QListView" name="listView"/>
         </item>
         <item>
          <spacer name="verticalSpacer_3">
@@ -319,6 +303,19 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="quit_button">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Quit</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>

@@ -48,10 +48,13 @@ bool QNode::init() {
 	}
 	ros::start(); // explicitly needed since our nodehandle is going out of scope.
 	ros::NodeHandle n;
+  image_transport::ImageTransport it(n);
+
 	// Add your ros communications here.
 	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
     buttom_publisher = n.advertise<std_msgs::String>("cmd",1000);
     chatter_subscriber = n.subscribe("chatter", 1000, &QNode::Callback, this);
+    image_sub = it.subscribe("camera/image",100,&QNode::myCallback_img,this);
 
     //chatter_subscriber = n.subscribe("chatter"，1000，＆QNode ::Callback,this);
 	start();
@@ -68,10 +71,12 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 	}
 	ros::start(); // explicitly needed since our nodehandle is going out of scope.
 	ros::NodeHandle n;
+  image_transport::ImageTransport it(n);
 	// Add your ros communications here.
     chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
     buttom_publisher = n.advertise<std_msgs::String>("cmd",1000);
     chatter_subscriber = n.subscribe("cmd", 1000, &QNode::Callback, this);
+    image_sub = it.subscribe("/usb_cam/image_raw",100,&QNode::myCallback_img,this);
 	start();
 	return true;
 }
@@ -192,4 +197,21 @@ void QNode::log( const LogLevel &level, const std::string &msg) {
         }
     }
 
+
+    void QNode::myCallback_img(const sensor_msgs::ImageConstPtr &msg)
+    {
+      try
+      {
+        cv_bridge::CvImageConstPtr cv_ptr = cv_bridge::toCvShare(msg, sensor_msgs::image_encodings::RGB8);
+        img = cv_ptr->image;
+        image = QImage(img.data,img.cols,img.rows,img.step[0],QImage::Format_RGB888);//change  to QImage format
+        ROS_INFO("I'm setting picture in remote_gui callback function!");
+        Q_EMIT loggingCamera();
+      }
+
+      catch (cv_bridge::Exception& e)
+        {
+          ROS_ERROR("Could not convert from '%s' to 'bgr8'.", msg->encoding.c_str());
+        }
+      }
 }  // namespace remote_gui

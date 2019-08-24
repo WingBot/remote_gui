@@ -15,7 +15,8 @@
 #include <QtGui/QMainWindow>
 #include "ui_main_window.h"
 #include "qnode.hpp"
-
+#include <QImage>
+#include <QMutex>
 /*****************************************************************************
 ** Namespace
 *****************************************************************************/
@@ -55,10 +56,14 @@ public Q_SLOTS:
         void updateLoggingView(); // no idea why this can't connect automatically
         void updateLoggingView_sub(); // no idea why this can't connect automatically
         void pub_cmd();
+        void updateLogcamera();
+        void displayCamera(const QImage& image);
 
 private:
 	Ui::MainWindowDesign ui;
 	QNode qnode;
+  QImage qimage_;
+  mutable QMutex qimage_mutex_;
 };
 
 }  // namespace remote_gui

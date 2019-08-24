@@ -10,8 +10,19 @@ project(remote_gui)
 ##############################################################################
 
 # qt_build provides the qt cmake glue, roscpp the comms for a default talker
-find_package(catkin REQUIRED COMPONENTS qt_build roscpp)
-include_directories(${catkin_INCLUDE_DIRS})
+find_package(catkin REQUIRED COMPONENTS
+    qt_build
+    roscpp
+    std_msgs
+    sensor_msgs
+    cv_bridge
+    image_transport
+    )
+find_package(OpenCV REQUIRED)
+include_directories(
+    include
+    ${catkin_INCLUDE_DIRS}
+    ${OpenCV_INCLUDE_DIRS})
 # Use this to define what the package will export (e.g. libs, headers).
 # Since the default here is to produce only a binary, we don't worry about
 # exporting anything. 
@@ -48,6 +59,6 @@ file(GLOB_RECURSE QT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINK
 ##############################################################################
 
 add_executable(remote_gui ${QT_SOURCES} ${QT_RESOURCES_CPP} ${QT_FORMS_HPP} ${QT_MOC_HPP})
-target_link_libraries(remote_gui ${QT_LIBRARIES} ${catkin_LIBRARIES})
+target_link_libraries(remote_gui ${QT_LIBRARIES} ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 install(TARGETS remote_gui RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 

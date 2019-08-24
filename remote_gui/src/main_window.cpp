@@ -48,6 +48,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     ui.view_logging_sub->setModel(qnode.loggingModel_sub());
     QObject::connect(&qnode, SIGNAL(loggingUpdated_sub()), this, SLOT(updateLoggingView_sub()));
 
+    QObject::connect(&qnode, SIGNAL(loggingCamera()), this, SLOT(updateLogcamera()));
+
     ui.dock_status->show();
 
     /*********************
@@ -125,6 +127,21 @@ void MainWindow::updateLoggingView() {
 void MainWindow::updateLoggingView_sub() {
         ui.view_logging_sub->scrollToBottom();
 }
+
+void MainWindow::displayCamera(const QImage &image) {
+  qimage_mutex_.lock();
+  qimage_ = image.copy();
+  ui.CameraLabel->setPixmap(QPixmap::fromImage(qimage_));
+  ui.CameraLabel->resize(ui.CameraLabel->pixmap()->size());
+  qimage_mutex_.unlock();
+}
+
+
+void MainWindow::updateLogcamera()
+{
+  displayCamera(qnode.image);
+}
+
 /*****************************************************************************
 ** Implementation [Menu]
 *****************************************************************************/
