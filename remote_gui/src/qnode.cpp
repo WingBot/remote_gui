@@ -53,8 +53,8 @@ bool QNode::init() {
 	// Add your ros communications here.
 	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
     buttom_publisher = n.advertise<std_msgs::String>("cmd",1000);
-    chatter_subscriber = n.subscribe("chatter", 1000, &QNode::Callback, this);
-    image_sub = it.subscribe("camera/image",100,&QNode::myCallback_img,this);
+    chatter_subscriber = n.subscribe("cmd", 1000, &QNode::Callback, this);
+    image_sub = it.subscribe("/usb_cam/image_raw",100,&QNode::myCallback_img,this);
 
     //chatter_subscriber = n.subscribe("chatter"，1000，＆QNode ::Callback,this);
 	start();
@@ -207,6 +207,7 @@ void QNode::log( const LogLevel &level, const std::string &msg) {
         image = QImage(img.data,img.cols,img.rows,img.step[0],QImage::Format_RGB888);//change  to QImage format
         ROS_INFO("I'm setting picture in remote_gui callback function!");
         Q_EMIT loggingCamera();
+        ROS_INFO("I'm  function!");
       }
 
       catch (cv_bridge::Exception& e)

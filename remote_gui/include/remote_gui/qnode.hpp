@@ -74,7 +74,7 @@ public:
 
 
 Q_SIGNALS:
-	void loggingUpdated();
+  void loggingUpdated();
   void loggingUpdated_sub();
   void rosShutdown();
   void loggingCamera();

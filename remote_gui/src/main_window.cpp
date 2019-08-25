@@ -35,7 +35,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     /*********************cmd button*********************/
     QObject::connect(ui.sent_cmd, SIGNAL(clicked()), this, SLOT(pub_cmd()));
     ReadSettings();
-	setWindowIcon(QIcon(":/images/icon.png"));
+  setWindowIcon(QIcon(":/images/logo.png"));
 	ui.tab_manager->setCurrentIndex(0); // ensure the first tab is showing - qt-designer should have this already hardwired, but often loses it (settings?).
     QObject::connect(&qnode, SIGNAL(rosShutdown()), this, SLOT(close()));
 
@@ -139,7 +139,7 @@ void MainWindow::displayCamera(const QImage &image) {
 
 void MainWindow::updateLogcamera()
 {
-  displayCamera(qnode.image);
+    MainWindow::displayCamera(qnode.image);
 }
 
 /*****************************************************************************

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>QRosApp</string>
+   <string>RobotRemoteGUI</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -66,9 +66,6 @@
            <item row="3" column="1">
             <widget class="QListView" name="view_logging"/>
            </item>
-           <item row="5" column="1">
-            <widget class="QListView" name="view_logging_sub"/>
-           </item>
            <item row="4" column="1">
             <widget class="QLabel" name="label_5">
              <property name="text">
@@ -78,6 +75,22 @@
               <set>Qt::AlignCenter</set>
              </property>
             </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QListView" name="view_logging_sub"/>
+           </item>
+           <item row="5" column="2">
+            <spacer name="verticalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>233</height>
+              </size>
+             </property>
+            </spacer>
            </item>
           </layout>
          </widget>
@@ -290,19 +303,6 @@
            <string>Camera</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>233</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QPushButton" name="quit_button">
