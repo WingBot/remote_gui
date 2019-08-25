@@ -68,8 +68,8 @@ public:
   void log_sub( const LogLevel &level, const std::string &msg);
   void Callback(const std_msgs::StringConstPtr&submsg);
   void sent_cmd();
-  void myCallback_img(const sensor_msgs::ImageConstPtr& msg);
-  QImage image;
+  //void myCallback_img(const sensor_msgs::ImageConstPtr& msg);
+  //QImage image;
 
 
 
@@ -77,7 +77,7 @@ Q_SIGNALS:
   void loggingUpdated();
   void loggingUpdated_sub();
   void rosShutdown();
-  void loggingCamera();
+  //void loggingCamera();
 
 private:
 	int init_argc;

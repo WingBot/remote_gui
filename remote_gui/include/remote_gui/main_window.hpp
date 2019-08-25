@@ -56,14 +56,19 @@ public Q_SLOTS:
         void updateLoggingView(); // no idea why this can't connect automatically
         void updateLoggingView_sub(); // no idea why this can't connect automatically
         void pub_cmd();
-        void updateLogcamera();
-        void displayCamera(const QImage& image);
-
+        //void updateLogcamera();
+       // void displayCamera(const QImage& image);
+        void Open_Camera();
+        void Gedit_Bashrc();
+        void Local_Master();
+/*private slots:
+        void on_OpenCamera_clicked();
+   */
 private:
 	Ui::MainWindowDesign ui;
 	QNode qnode;
-  QImage qimage_;
-  mutable QMutex qimage_mutex_;
+  //QImage qimage_;
+  //mutable QMutex qimage_mutex_;
 };
 
 }  // namespace remote_gui

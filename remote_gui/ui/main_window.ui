@@ -79,19 +79,6 @@
            <item row="5" column="1">
             <widget class="QListView" name="view_logging_sub"/>
            </item>
-           <item row="5" column="2">
-            <spacer name="verticalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>233</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
           </layout>
          </widget>
         </item>
@@ -169,19 +156,6 @@
            <string>Ros Master</string>
           </property>
           <layout class="QGridLayout" name="gridLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <property name="text">
-              <string>Ros Master Url</string>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="0" colspan="2">
             <widget class="QLineEdit" name="line_edit_master">
              <property name="text">
@@ -202,10 +176,65 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="0" colspan="2">
-            <widget class="QLineEdit" name="line_edit_host">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
              <property name="text">
-              <string>192.168.1.67</string>
+              <string>Ros Master Url</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0" colspan="2">
+            <widget class="QCheckBox" name="checkbox_remember_settings">
+             <property name="layoutDirection">
+              <enum>Qt::RightToLeft</enum>
+             </property>
+             <property name="text">
+              <string>Remember settings on startup</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QPushButton" name="button_connect">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>Set the target to the current joint trajectory state.</string>
+             </property>
+             <property name="statusTip">
+              <string>Clear all waypoints and set the target to the current joint trajectory state.</string>
+             </property>
+             <property name="text">
+              <string>Connect</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="2">
+            <widget class="QCheckBox" name="checkbox_use_environment">
+             <property name="layoutDirection">
+              <enum>Qt::RightToLeft</enum>
+             </property>
+             <property name="text">
+              <string>Use environment variables</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QPushButton" name="LocalMaster">
+             <property name="text">
+              <string>roscore</string>
              </property>
             </widget>
            </item>
@@ -232,58 +261,17 @@
              </property>
             </widget>
            </item>
-           <item row="6" column="0" colspan="2">
-            <widget class="QCheckBox" name="checkbox_use_environment">
-             <property name="layoutDirection">
-              <enum>Qt::RightToLeft</enum>
-             </property>
+           <item row="3" column="0" colspan="2">
+            <widget class="QLineEdit" name="line_edit_host">
              <property name="text">
-              <string>Use environment variables</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0" colspan="2">
-            <widget class="QCheckBox" name="checkbox_remember_settings">
-             <property name="layoutDirection">
-              <enum>Qt::RightToLeft</enum>
-             </property>
-             <property name="text">
-              <string>Remember settings on startup</string>
+              <string>192.168.1.67</string>
              </property>
             </widget>
            </item>
            <item row="8" column="0">
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>170</width>
-               <height>21</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="8" column="1">
-            <widget class="QPushButton" name="button_connect">
-             <property name="enabled">
-              <bool>true</bool>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="toolTip">
-              <string>Set the target to the current joint trajectory state.</string>
-             </property>
-             <property name="statusTip">
-              <string>Clear all waypoints and set the target to the current joint trajectory state.</string>
-             </property>
+            <widget class="QPushButton" name="GeditBashrc">
              <property name="text">
-              <string>Connect</string>
+              <string>gedit-bashrc</string>
              </property>
             </widget>
            </item>
@@ -298,11 +286,44 @@
          </widget>
         </item>
         <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>170</width>
+            <height>21</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QLabel" name="CameraLabel">
           <property name="text">
            <string>Camera</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="OpenCamera">
+          <property name="text">
+           <string>OpenCamera</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>233</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QPushButton" name="quit_button">
